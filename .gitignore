@@ -1,0 +1,9 @@
+*.bak
+*.bck
+*.kicad_pcb-bak
+*-cache.lib
+build
+deps
+.vscode
+
+

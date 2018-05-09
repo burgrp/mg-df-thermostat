@@ -1,0 +1,28 @@
+author: DEVICE-FARM
+description: A simple thermostat with single relay, LED and DS18B20 sensor
+version: 1.0
+arch: esp8266
+
+tags:
+  - c
+
+sources:
+  - src
+
+filesystem:
+  - fs
+
+libs:
+  - origin: ../mg-df-core
+  - origin: ../mg-df-ds18b20
+  
+skeleton_version: 2017-05-18
+
+config_schema:
+  - ["thermostat", "o", {"title": "Thermostat settings"}]
+  - ["thermostat.enabled", "b", true, {"title": "Is thermostat enabled?"}]
+  - ["thermostat.target", "i", 20, {"title": "Target temperature in Celsius"}]
+  - ["thermostat.relay", "i", 4, {"title": "Relay pin number"}]
+  - ["thermostat.led", "i", 5, {"title": "LED pin number"}]
+  - ["thermostat.sensor", "i", 12, {"title": "DS18B20 sensor pin number"}]
+  - ["thermostat.tickms", "i", 2000, {"title": "Tick period in ms"}]

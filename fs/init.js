@@ -42,7 +42,7 @@ Timer.set(tickMs, true, function (ctx) {
         let state = target.value > temp.value;
         GPIO.write(relayPin, state? 1: 0);
         GPIO.write(ledPin, state? 0: 1);
-        Timer.set(100, false, function (state) {
+        Timer.set(50, false, function (state) {
             GPIO.write(ledPin, state? 1: 0);
         }, state);        
     } else {

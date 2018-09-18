@@ -39,8 +39,15 @@ Timer.set(tickMs, true, function (ctx) {
     // print("TARGET", target.value);
     // print("ENABLED", enabled.value);
     if (enabled.value && temp.value !== undefined) {
-        let state = target.value > temp.value;
-        GPIO.write(relayPin, state? 1: 0);
+        let state = GPIO.read(relayPin) === 1;
+        let over = temp.value > target.value + 1;
+        let under = temp.value < target.value - 1;
+
+        if (over || under) {
+          state = under;  
+          GPIO.write(relayPin, state? 1: 0);
+        }
+        
         GPIO.write(ledPin, state? 0: 1);
         Timer.set(50, false, function (state) {
             GPIO.write(ledPin, state? 1: 0);

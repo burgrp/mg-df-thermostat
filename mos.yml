@@ -11,18 +11,20 @@ sources:
 
 filesystem:
   - fs
+  - fs-build
 
 libs:
   - origin: ../mg-df-core
   - origin: ../mg-df-ds18b20
   
-skeleton_version: 2017-05-18
-
 config_schema:
   - ["thermostat", "o", {"title": "Thermostat settings"}]
+  - ["thermostat.prefix", "s", "thermostat.", {"title": "Prefix of register names"}]
   - ["thermostat.enabled", "b", true, {"title": "Is thermostat enabled?"}]
   - ["thermostat.target", "i", 20, {"title": "Target temperature in Celsius"}]
   - ["thermostat.relay", "i", 4, {"title": "Relay pin number"}]
   - ["thermostat.led", "i", 5, {"title": "LED pin number"}]
   - ["thermostat.sensor", "i", 12, {"title": "DS18B20 sensor pin number"}]
   - ["thermostat.tickms", "i", 2000, {"title": "Tick period in ms"}]
+
+manifest_version: 2017-09-29

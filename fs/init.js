@@ -7,9 +7,11 @@ load("api_df_reg.js");
 load("api_df_reg_cfg.js");
 load("api_df_reg_ds18b20.js");
 
-let temp = Register.add("temp", RegisterDS18B20.create(Cfg.get("thermostat.sensor")));
+let regPrefix = Cfg.get("thermostat.prefix");
 
-let target = Register.add("target", RegisterConfig.create("thermostat.target", function(value) {
+let temp = Register.add(regPrefix + "temp", RegisterDS18B20.create(Cfg.get("thermostat.sensor")));
+
+let target = Register.add(regPrefix + "target", RegisterConfig.create("thermostat.target", function(value) {
     return {
         thermostat: {
             target: value
@@ -17,7 +19,7 @@ let target = Register.add("target", RegisterConfig.create("thermostat.target", f
     };
 }));
 
-let enabled = Register.add("enabled", RegisterConfig.create("thermostat.enabled", function(value) {
+let enabled = Register.add(regPrefix + "enabled", RegisterConfig.create("thermostat.enabled", function(value) {
     return {
         thermostat: {
             enabled: value

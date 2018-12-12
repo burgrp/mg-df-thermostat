@@ -1,21 +1,13 @@
 author: DEVICE-FARM
 description: A simple thermostat with single relay, LED and DS18B20 sensor
 version: 1.0
-arch: esp8266
-
-tags:
-  - c
-
-sources:
-  - src
 
 filesystem:
   - fs
-  - fs-build
 
 libs:
-  - origin: ../mg-df-core
-  - origin: ../mg-df-ds18b20
+  - origin: ../../mg-df-core
+  - origin: ../../mg-df-ds18b20
   
 config_schema:
   - ["thermostat", "o", {"title": "Thermostat settings"}]
